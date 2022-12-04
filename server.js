@@ -4,12 +4,14 @@ const express = require("express");
 const app = express();
 const userRoute = require("./routes/userRoute");
 const employeeRoute = require("./routes/employeeRoute");
+const cors = require("cors")
 
-const PORT_NUMBER = 8081;
-const DB_URL =
+const PORT_NUMBER = process.env.PORT || 8081;
+const DB_URL = process.env.DB_URL ||
     "mongodb+srv://maitri14:maitri@cluster0.anxyfzf.mongodb.net/comp3123_assignment1?retryWrites=true&w=majority";
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use(cors())
 
 mongoose.Promise = global.Promise;
 
